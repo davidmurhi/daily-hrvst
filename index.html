@@ -22,6 +22,9 @@
     --grey:#7A766C;
     --grey-line:#ECE4D3;
     --green-ok:#3F9B5C;
+    --theme-light:#F3961E;
+    --theme-mid:#D9760A;
+    --theme-dark:#B85A12;
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
   html{ scroll-behavior:smooth; }
@@ -62,12 +65,12 @@
   .logo img{ height:100%; width:auto; display:block; }
   .navlinks{ display:flex; gap:16px; font-size:11px; font-weight:600; letter-spacing:0.02em; color:var(--grey); }
   .navlinks .on{ color:var(--black); position:relative; }
-  .navlinks .on::after{ content:''; position:absolute; left:0; right:0; bottom:-16px; height:2px; background:var(--turmeric); }
+  .navlinks .on::after{ content:''; position:absolute; left:0; right:0; bottom:-16px; height:2px; background:var(--theme-light); }
   @media (max-width:420px){ .navlinks span:not(.on){ display:none; } }
 
   /* ===== Scan landing moment ===== */
   .scan-landing{
-    background:linear-gradient(135deg, var(--turmeric) 0%, var(--turmeric-deep) 55%, #B85A12 100%);
+    background:linear-gradient(135deg, var(--theme-light) 0%, var(--theme-mid) 55%, var(--theme-dark) 100%);
     color:#fff; padding:26px 20px 30px; text-align:center;
     position:relative; overflow:hidden;
   }
@@ -96,19 +99,32 @@
   }
   .scan-confirm .dot{ width:7px; height:7px; border-radius:50%; background:#fff; }
 
+  .shot-gave{
+    position:relative; z-index:1; margin-top:16px; background:rgba(255,255,255,0.14);
+    border:1px solid rgba(255,255,255,0.25); border-radius:12px; padding:14px 16px;
+    text-align:left;
+  }
+  .sg-head{ display:flex; align-items:baseline; justify-content:space-between; margin-bottom:10px; }
+  .sg-title{ font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:#fff; }
+  .sg-demo-tag{ font-size:9px; font-weight:600; color:rgba(255,255,255,0.75); font-style:italic; }
+  .sg-grid{ display:flex; gap:10px; }
+  .sg-item{ flex:1; text-align:center; }
+  .sg-val{ font-size:16px; font-weight:900; font-family:'Archivo',sans-serif; color:#fff; }
+  .sg-lbl{ font-size:9.5px; color:rgba(255,255,255,0.8); margin-top:2px; }
+
   /* ===== Streak hero ===== */
   .streak-section{ padding:30px 20px 26px; text-align:center; border-bottom:1px solid var(--grey-line); }
   .streak-row{ display:flex; align-items:center; justify-content:center; gap:30px; margin-bottom:18px; }
   .streak-num-wrap{ }
   .streak-num-row{ display:flex; align-items:center; gap:9px; justify-content:center; }
-  .streak-num{ font-size:76px; line-height:0.85; font-weight:900; font-family:'Archivo',sans-serif; color:var(--turmeric-deep); }
+  .streak-num{ font-size:76px; line-height:0.85; font-weight:900; font-family:'Archivo',sans-serif; color:var(--theme-mid); }
   .streak-unit{ font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--grey); margin-top:2px; }
   .flame-icon{ font-size:20px; }
   .streak-divider{ width:1px; height:50px; background:var(--grey-line); }
   .week-dots{ display:flex; flex-direction:column; gap:8px; align-items:flex-start; }
   .week-row{ display:flex; gap:5px; }
   .week-dot{ width:14px; height:14px; border-radius:4px; background:var(--grey-line); }
-  .week-dot.done{ background:var(--turmeric); }
+  .week-dot.done{ background:var(--theme-light); }
   .week-label{ font-size:10px; color:var(--grey); font-weight:600; }
 
   .scan-btn{
@@ -127,19 +143,25 @@
   .scan-btn span{ position:relative; z-index:1; display:inline-flex; align-items:center; gap:10px; }
   .scan-btn:hover{ transform:translateY(-1px); box-shadow:0 10px 24px rgba(42,90,41,0.4); }
   .scan-btn:active{ transform:scale(0.98); }
+  .scan-btn.maxed{ opacity:0.55; cursor:default; pointer-events:none; }
   .scan-btn svg{ width:17px; height:17px; }
   .scan-status{
     margin-top:12px; font-size:12px; color:var(--green-ok); font-weight:700;
     opacity:0; transition:opacity .3s ease; display:flex; align-items:center; justify-content:center; gap:6px;
   }
   .scan-status.show{ opacity:1; }
+  .bonus-points{
+    margin-top:8px; font-size:11.5px; color:var(--theme-mid); font-weight:700;
+    text-align:center; opacity:0; transition:opacity .3s ease;
+  }
+  .bonus-points.show{ opacity:1; }
 
   .streak-reward-note{ margin-bottom:18px; }
   .reward-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
   .reward-text{ font-size:11.5px; font-weight:600; color:var(--grey); }
   .reward-days{ font-size:11px; font-weight:600; color:var(--grey); }
   .reward-bar-track{ height:4px; border-radius:3px; background:var(--grey-line); overflow:hidden; }
-  .reward-bar-fill{ height:100%; border-radius:3px; background:var(--turmeric); }
+  .reward-bar-fill{ height:100%; border-radius:3px; background:var(--theme-light); }
 
   .claim-btn{
     display:none; align-items:center; justify-content:center; gap:6px;
@@ -165,10 +187,10 @@
   .lb-row:last-child{ border-bottom:none; }
   .lb-row.me{
     background:linear-gradient(90deg, #FEF3E2, #FFF9F0);
-    border-left:3px solid var(--turmeric-deep);
+    border-left:3px solid var(--theme-mid);
   }
   .lb-rank{ font-size:13px; font-weight:800; color:var(--grey); width:16px; text-align:center; }
-  .lb-row.me .lb-rank{ color:var(--turmeric-deep); }
+  .lb-row.me .lb-rank{ color:var(--theme-mid); }
   .lb-avatar{
     width:32px; height:32px; border-radius:50%; color:#fff; font-weight:800;
     font-family:'Archivo',sans-serif; font-size:13px;
@@ -179,7 +201,7 @@
   .lb-name{ font-size:13px; font-weight:700; color:var(--grey); }
   .lb-tag{ font-size:9.5px; color:var(--grey); font-weight:600; }
   .lb-streak{
-    font-size:13px; font-weight:800; color:var(--turmeric-deep);
+    font-size:13px; font-weight:800; color:var(--theme-mid);
     background:rgba(217,118,10,0.1); padding:4px 9px; border-radius:20px;
   }
 
@@ -345,7 +367,7 @@
   .tagus-btn svg{ width:15px; height:15px; }
 
   /* ===== Share ===== */
-  .share-card{ background:linear-gradient(135deg, var(--turmeric) 0%, var(--turmeric-deep) 100%); border-radius:14px; padding:20px; color:#fff; position:relative; overflow:hidden; }
+  .share-card{ background:linear-gradient(135deg, var(--theme-light) 0%, var(--theme-mid) 100%); border-radius:14px; padding:20px; color:#fff; position:relative; overflow:hidden; }
   .share-card::before{ content:''; position:absolute; top:-50px; right:-50px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,0.15); }
   .share-top{ display:flex; align-items:center; gap:10px; margin-bottom:14px; position:relative; z-index:1; }
   .share-avatar{ width:28px; height:28px; border-radius:50%; background:var(--black); }
@@ -403,9 +425,21 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
       You scanned a bottle
     </div>
-    <div class="scan-title disp">Orange Sky Shot</div>
+    <div class="scan-title disp">Gold Digger Shot</div>
     <div class="scan-sub">Welcome back, Kelly — logging this to your streak</div>
     <div class="scan-confirm"><span class="dot"></span> Added to today's intake</div>
+
+    <div class="shot-gave" id="shotGave">
+      <div class="sg-head">
+        <div class="sg-title">What This Shot Gave You</div>
+        <div class="sg-demo-tag">sample data</div>
+      </div>
+      <div class="sg-grid" id="sgGrid">
+        <div class="sg-item"><div class="sg-val">450mcg</div><div class="sg-lbl">Vitamin A</div></div>
+        <div class="sg-item"><div class="sg-val">8mg</div><div class="sg-lbl">Beta-Carotene</div></div>
+        <div class="sg-item"><div class="sg-val">2g</div><div class="sg-lbl">Fibre</div></div>
+      </div>
+    </div>
   </div>
 
   <!-- STREAK -->
@@ -449,6 +483,7 @@
       </span>
     </button>
     <div class="scan-status" id="scanStatus">✓ Logged for today — Day 6</div>
+    <div class="bonus-points" id="bonusPoints">Bonus points today: <span id="bonusVal">0</span></div>
   </div>
 
   <!-- STREAK CHALLENGES WITH MATES -->
@@ -469,13 +504,13 @@
       <div class="lb-row">
         <div class="lb-rank">2</div>
         <div class="lb-avatar" style="background:var(--greens);">M</div>
-        <div class="lb-info"><div class="lb-name">Maya</div><div class="lb-tag">1 behind you</div></div>
+        <div class="lb-info"><div class="lb-name">Maya</div><div class="lb-tag" id="mayaTag">1 behind you</div></div>
         <div class="lb-streak">🔥 4</div>
       </div>
       <div class="lb-row">
         <div class="lb-rank">3</div>
         <div class="lb-avatar" style="background:#B03055;">J</div>
-        <div class="lb-info"><div class="lb-name">Jordan</div><div class="lb-tag">3 behind you</div></div>
+        <div class="lb-info"><div class="lb-name">Jordan</div><div class="lb-tag" id="jordanTag">3 behind you</div></div>
         <div class="lb-streak">🔥 2</div>
       </div>
       <div class="lb-row">
@@ -492,7 +527,7 @@
     <div class="section-head">
       <div class="section-title">Every Bottle Leads Here</div>
     </div>
-    <div class="range-sub">Whichever flavour you grab, the QR on the label brings you straight back to your streak. Recipes shown are core ingredients — more are being added as the range grows.</div>
+    <div class="range-sub">Whichever flavour you grab, the QR on the label brings you straight back to your streak. Recipes shown are core ingredients — more are being added as the range grows. Tap a bottle to see what's inside.</div>
 
     <div class="range-scroll" id="bottleRange"></div>
   </div>
@@ -939,43 +974,127 @@
   const toast = document.getElementById('toast');
   let scanned = false;
 
+  // Placeholder "what this shot gave you" data per flavour — illustrative only
+  const shotData = [
+    { name:"Gold Digger", items:[["450mcg","Vitamin A"],["8mg","Beta-Carotene"],["2g","Fibre"]],
+      theme:{ light:"#F3961E", mid:"#D9760A", dark:"#B85A12" } },
+    { name:"Blood Bank",  items:[["3.2mg","Iron"],["65mcg","Folate"],["180mg","Nitrates"]],
+      theme:{ light:"#C8385A", mid:"#8C2545", dark:"#6B1A36" } },
+    { name:"Orange Sky",  items:[["45mg","Vitamin C"],["240mg","Potassium"],["18mcg","Folate"]],
+      theme:{ light:"#F4B33D", mid:"#C98A1F", dark:"#9C6B14" } },
+    { name:"Little Green",items:[["85mcg","Vitamin K"],["40mg","Magnesium"],["1.4mg","Chlorophyll"]],
+      theme:{ light:"#5FA854", mid:"#2A5A29", dark:"#1F4A1E" } },
+  ];
+  let shotIndex = 0; // page loads showing the Gold Digger shot just scanned
+
+  function renderShot(i){
+    const data = shotData[i];
+    document.querySelector('.scan-title').textContent = data.name + ' Shot';
+    const grid = document.getElementById('sgGrid');
+    grid.innerHTML = data.items.map(([val,lbl]) =>
+      `<div class="sg-item"><div class="sg-val">${val}</div><div class="sg-lbl">${lbl}</div></div>`
+    ).join('');
+  }
+
+  function applyTheme(theme){
+    const root = document.documentElement.style;
+    root.setProperty('--theme-light', theme.light);
+    root.setProperty('--theme-mid', theme.mid);
+    root.setProperty('--theme-dark', theme.dark);
+  }
+
+  // Set the page up correctly for the Orange Sky shot already shown on load
+  renderShot(shotIndex);
+  applyTheme(shotData[shotIndex].theme);
+
+  let clickCount = 0;
+  const MAX_CLICKS = 2; // Day 6's normal scan + exactly one bonus bottle, then it's locked for the day
+  let bonusTotal = 0;
+  const bonusVal = document.getElementById('bonusVal');
+  const bonusPoints = document.getElementById('bonusPoints');
+  const myLbStreak = document.querySelector('.lb-row.me .lb-streak');
+
+  function formatPoints(n){
+    return n.toFixed(2).replace(/\.?0+$/,'') || '0';
+  }
+
   scanBtn.addEventListener('click', () => {
-    if(scanned) return;
-    scanned = true;
-    scanStatus.classList.add('show');
+    if(clickCount >= MAX_CLICKS) return;
+    clickCount++;
 
-    // Day 5 → Day 6 — one day still to go before the Day 7 reward
-    const allDots = document.querySelectorAll('#weekRow .week-dot');
-    allDots[5].classList.add('done');
+    // Every scan — same day or not — shows a different bottle's theme and breakdown
+    shotIndex = (shotIndex + 1) % shotData.length;
+    renderShot(shotIndex);
+    applyTheme(shotData[shotIndex].theme);
 
-    streakEl.textContent = 6;
-    streakEl.style.transition = 'transform .3s ease';
-    streakEl.style.transform = 'scale(1.2)';
-    setTimeout(()=> streakEl.style.transform = 'scale(1)', 300);
+    if(clickCount === 1){
+      // First click — Day 5 → Day 6, the normal daily scan
+      scanned = true;
+      scanStatus.classList.add('show');
 
-    toast.classList.add('show');
-    setTimeout(()=> toast.classList.remove('show'), 2600);
+      const allDots = document.querySelectorAll('#weekRow .week-dot');
+      allDots[5].classList.add('done');
 
-    scanBtn.style.opacity = '0.6';
-    scanBtn.innerHTML = '<span>✓ Logged for Today</span>';
+      streakEl.textContent = 6;
+      streakEl.style.transition = 'transform .3s ease';
+      streakEl.style.transform = 'scale(1.2)';
+      setTimeout(()=> streakEl.style.transform = 'scale(1)', 300);
 
-    // Keep leaderboard in sync with streak bump
-    const myStreak = document.querySelector('.lb-row.me .lb-streak');
-    if(myStreak) myStreak.textContent = '🔥 6';
+      toast.textContent = '🔥 Logged — Day 6!';
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 2600);
 
-    // Still locked — one day left until the Day 7 reward
-    document.getElementById('rewardBar').style.width = '86%';
-    document.getElementById('rewardDays').textContent = '1 day left';
+      scanBtn.innerHTML = '<span>Scan Another Bottle</span>';
 
-    // Sync nutrient mapping, and share card, with the new day count
-    const ncShots = document.getElementById('ncShots');
-    if(ncShots) ncShots.textContent = '6';
-    const ncVitC = document.getElementById('ncVitC');
-    if(ncVitC) ncVitC.textContent = '90mg';
-    document.querySelectorAll('#nutrientStreakNum, #shareStreakNum, #shareVitCDays, #shareCaptionNum')
-      .forEach(el => el.textContent = '6');
-    const shareVitCNum = document.getElementById('shareVitCNum');
-    if(shareVitCNum) shareVitCNum.textContent = '90mg';
+      // Keep leaderboard in sync with the streak bump
+      if(myLbStreak) myLbStreak.textContent = '🔥 6';
+
+      // Mates' "behind you" gaps widen now that Kelly is on 6
+      const mayaTag = document.getElementById('mayaTag');
+      if(mayaTag) mayaTag.textContent = '2 behind you';
+      const jordanTag = document.getElementById('jordanTag');
+      if(jordanTag) jordanTag.textContent = '4 behind you';
+
+      // Still locked — one day left until the Day 7 reward
+      document.getElementById('rewardBar').style.width = '86%';
+      document.getElementById('rewardDays').textContent = '1 day left';
+
+      // Sync nutrient mapping and share card with the new day count
+      const ncShots = document.getElementById('ncShots');
+      if(ncShots) ncShots.textContent = '6';
+      const ncVitC = document.getElementById('ncVitC');
+      if(ncVitC) ncVitC.textContent = '90mg';
+      document.querySelectorAll('#nutrientStreakNum, #shareStreakNum, #shareVitCDays, #shareCaptionNum')
+        .forEach(el => el.textContent = '6');
+      const shareVitCNum = document.getElementById('shareVitCNum');
+      if(shareVitCNum) shareVitCNum.textContent = '90mg';
+
+    } else if(clickCount === 2){
+      // The one allowed bonus bottle for Day 6 — adds points, not another day
+      const bonus = 0.5;
+      bonusTotal += bonus;
+      bonusVal.textContent = formatPoints(bonusTotal);
+      bonusPoints.classList.add('show');
+
+      toast.textContent = `+${bonus} bonus points — shot 2 today!`;
+      toast.classList.add('show');
+      setTimeout(()=> toast.classList.remove('show'), 2600);
+
+      // Bonus points roll straight into the streak challenge score
+      if(myLbStreak) myLbStreak.textContent = `🔥 ${formatPoints(6 + bonusTotal)}`;
+
+      // The extra shot itself shows up in actual nutrient totals, even though the day count doesn't move
+      const ncShots = document.getElementById('ncShots');
+      if(ncShots) ncShots.textContent = '7';
+      const ncVitC = document.getElementById('ncVitC');
+      if(ncVitC) ncVitC.textContent = '105mg';
+      const shareVitCNum = document.getElementById('shareVitCNum');
+      if(shareVitCNum) shareVitCNum.textContent = '105mg';
+
+      // Locked for the day — that was the one bonus bottle allowed
+      scanBtn.innerHTML = '<span>✓ All Shots Logged Today</span>';
+      scanBtn.classList.add('maxed');
+    }
   });
 
   const claimNote = document.getElementById('claimNote');
